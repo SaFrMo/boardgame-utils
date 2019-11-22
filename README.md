@@ -94,7 +94,7 @@ A Vue mixin to handle setting up a boardgame.io client.
 }
 ```
 
-An example setup in a Vue `<script>`:
+An example setup in a Vue single-file component:
 
 ```html
 <template>
@@ -118,6 +118,7 @@ An example setup in a Vue `<script>`:
             return {
                 // use options imported above
                 options: options,
+
                 // example cards
                 cards: [1, 2, 3]
             }
@@ -127,6 +128,7 @@ An example setup in a Vue `<script>`:
                 // make sure we turn on the debug window
                 this.options.debug = true
             },
+
             playCard(card) {
                 // plays 1, 2, or 3
                 // assumes we've defined a move called `playCard` in our game (https://boardgame.io/documentation/#/README?id=moves)
@@ -146,5 +148,3 @@ An example setup in a Vue `<script>`:
     - `index.js` passes args to pass to `options`
     - `phases.js` contains phases to pass to `index`, including 1 `start: true` phase
     - `moves.js` contains all moves to pass to `phases`
-
-## `deck` and `buildDeck`
