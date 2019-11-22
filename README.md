@@ -15,7 +15,7 @@ You can then import any of the named modules below.
 
 `import { buildDeck } from 'boardgame-utils'`
 
-Function to build a deck with options.
+Function to build a deck with options. Cards in the deck are objects in the same format as those in the [deck](#deck) function.
 
 ```
 // defaults shown
