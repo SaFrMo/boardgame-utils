@@ -11,7 +11,7 @@ You can then import any of the named modules below.
 1. Misc
     1. [Misc Notes](#misc-notes)
 
-### `buildDeck`
+### buildDeck
 
 `import { buildDeck } from 'boardgame-utils'`
 
@@ -33,7 +33,7 @@ buildDeck({
 })
 ```
 
-### `deck`
+### deck
 
 `import { deck } from 'boardgame-utils'`
 
@@ -55,7 +55,7 @@ A standard 52-card, 4-suit deck. Contains ranks from 1-13 inclusive and suits `[
 
 It's left to the developer to handle face cards and aces high/low.
 
-### `mixin`
+### mixin
 
 `import { mixin } from 'boardgame-utils'`
 
