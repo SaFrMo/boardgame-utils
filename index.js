@@ -1,4 +1,4 @@
 import mixin from './lib/mixin'
-import { BuildDeck, deck } from './lib/buildDeck'
+import { buildDeck, deck } from './lib/buildDeck'
 
-export { mixin, deck, BuildDeck }
+export { mixin, deck, buildDeck }
