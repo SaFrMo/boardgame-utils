@@ -6,7 +6,9 @@ You can then import any of the named modules below.
 
 1. Modules
     1. [buildDeck](#buildDeck)
+    1. [buildGrid](#buildGrid)
     1. [deck](#deck)
+    1. [getCell](#getCell)
     1. [mixin](#mixin)
 1. Misc
     1. [Misc Notes](#misc-notes)
@@ -33,6 +35,10 @@ buildDeck({
 })
 ```
 
+### buildGrid
+
+TODO
+
 ### deck
 
 `import { deck } from 'boardgame-utils'`
@@ -54,6 +60,10 @@ A standard 52-card, 4-suit deck. Contains ranks from 1-13 inclusive and suits `[
 ```
 
 It's left to the developer to handle face cards and aces high/low.
+
+### getCell
+
+TODO
 
 ### mixin
 
