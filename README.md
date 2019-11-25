@@ -158,3 +158,7 @@ An example setup in a Vue single-file component:
     - `index.js` passes args to pass to `options`
     - `phases.js` contains phases to pass to `index`, including 1 `start: true` phase
     - `moves.js` contains all moves to pass to `phases`
+
+#### Misc tips
+
+-   Don't modify G nested properties (like `G.enemies[0].hp - 10`) directly in Vue events - call moves that include an index so the framework can do so (like `<button @click="client.moves.changeHp(i, 10)"</button>` in Vue and `(index, amount) => G.enemies[index].hp -= amount` in the relevant phase).
