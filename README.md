@@ -9,7 +9,8 @@ You can then import any of the named modules below.
     1. [buildGrid](#buildGrid)
     1. [deck](#deck)
     1. [getCell](#getCell)
-    1. [mixin](#mixin)
+    1. [Vue mixin](#mixin)
+    1. [Vue plugin](#plugin)
 1. Misc
     1. [Misc Notes](#misc-notes)
 
@@ -148,6 +149,10 @@ An example setup in a Vue single-file component:
     }
 </script>
 ```
+
+### plugin
+
+TODO
 
 ### Misc notes
 
