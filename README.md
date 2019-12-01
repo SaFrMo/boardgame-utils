@@ -73,6 +73,8 @@ TODO
 ### getCell
 
 ```js
+import { grid: { getCell } } from 'boardgame-utils'
+
 getCell({
     x,
     y,
@@ -96,7 +98,9 @@ getCell(2, 2, board, 3) // = 8
 
 ### getCoordsFromIndex
 
-```
+```js
+import { grid: { getCoordsFromIndex } } from 'boardgame-utils'
+
 getCoordsFromIndex(index, width = 10)
 ```
 
@@ -115,7 +119,9 @@ getCoordsFromIndex(8, 3) // = { x: 2, y: 2 }
 
 ### getIndexFromCoords
 
-```
+```js
+import { grid: { getIndexFromCoords } } from 'boardgame-utils'
+
 getIndexFromCoords({ x, y }, width = 10)
 ```
 
