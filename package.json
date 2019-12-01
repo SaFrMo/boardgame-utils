@@ -1,6 +1,6 @@
 {
     "name": "boardgame-utils",
-    "version": "1.3.23",
+    "version": "1.3.24",
     "description": "Utilities to make development in [boardgame.io](https://boardgame.io/) easier.",
     "main": "index.js",
     "scripts": {
