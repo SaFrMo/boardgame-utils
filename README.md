@@ -138,7 +138,7 @@ getIndexFromCoords({x: 2, y: 2}, 3) // = 8
 
 `import { mixin } from 'boardgame-utils'`
 
-A Vue mixin to handle setting up a boardgame.io client.
+A Vue mixin to handle setting up a boardgame.io client. This is suitable for small-scale games - larger ones should use the Vue [plugin](#plugin) below.
 
 ```
 {
