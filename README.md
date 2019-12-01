@@ -152,7 +152,58 @@ An example setup in a Vue single-file component:
 
 ### plugin
 
-TODO
+A Vue plugin to handle boardgame.io + Vue boilerplate.
+
+To register:
+
+```js
+import Vue from 'vue'
+import { plugin as boardgamePlugin } from 'boardgame-utils'
+// client options per https://boardgame.io/documentation/#/api/Client
+import options from 'your-game-options'
+// the plugin registers a vuex module called `boardgame` to handle state manipulation, so you'll also need to have your Vuex store ready to use
+import store from 'your-vuex-store'
+
+Vue.use(boardgamePlugin, {
+    // client options (required)
+    options: options,
+    // Vuex store (required)
+    store: store,
+    // whether or not to initialize the client immediately (optional, default: true)
+    initClient: true
+})
+```
+
+The plugin adds the following in Vuex:
+
+-   Store:
+    -   `G` - G from boardgame.io state
+    -   `ctx` - ctx from boardgame.io state
+-   Mutations:
+
+    -   `commit('UPDATE_STORE')` - Updates the store's G and ctx to match the state of the game. Used internally and does not take any arguments.
+
+    _Since boardgame.io uses [Proxied](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) G and ctx objects, `UPDATE_STORE` is called to update the store's deep clones of those G and ctx objects. This keeps boardgame.io's internal state self-contained and the Vuex store reactive._
+
+-   Actions:
+    -   `dispatch('INIT_CLIENT', { options : {}})` - Creates a boardgame.io client with the given options. Called automatically unless `initClient` is set to `false`
+    -   `dispatch('PLAY_MOVE', { move: 'moveName', options: {} })` - Runs a boardgame.io move with the (optional) given options.
+    -   `dispatch('RUN_EVENT', { event: 'eventName', options: {} })` - Runs a boardgame.io [event](https://boardgame.io/documentation/#/events) with the (optional) given options.
+
+The plugin also adds the following global mixin:
+
+```js
+{
+    computed: {
+        G() {
+            // alias for this.$store.state.boardgame.G
+        },
+        ctx() {
+            // alias for this.$store.state.boardgame.ctx
+        }
+    }
+}
+```
 
 ### Misc notes
 
