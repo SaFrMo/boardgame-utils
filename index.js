@@ -1,13 +1,7 @@
 import mixin from './lib/vue/mixin'
 import plugin from './lib/vue/plugin'
 import { buildDeck, deck } from './lib/buildDeck'
-import { getCell, buildGrid } from './lib/grid'
-
-// 2d grid
-const grid = {
-    getCell,
-    buildGrid
-}
+import * as grid from './lib/grid'
 
 export {
     // Vue mixin

@@ -4,15 +4,21 @@ Utilities to make development in [boardgame.io](https://boardgame.io/) easier.
 
 You can then import any of the named modules below.
 
-1. Modules
+1. Cards
     1. [buildDeck](#buildDeck)
-    1. [buildGrid](#buildGrid)
     1. [deck](#deck)
+1. Grid
+    1. [buildGrid](#buildGrid)
     1. [getCell](#getCell)
+    1. [getCoordsFromIndex](#getCoordsFromIndex)
+    1. [getIndexFromCoords](#getIndexFromCoords)
+1. Vue
     1. [Vue mixin](#mixin)
     1. [Vue plugin](#plugin)
 1. Misc
     1. [Misc Notes](#misc-notes)
+
+## Cards
 
 ### buildDeck
 
@@ -36,10 +42,6 @@ buildDeck({
 })
 ```
 
-### buildGrid
-
-TODO
-
 ### deck
 
 `import { deck } from 'boardgame-utils'`
@@ -62,9 +64,75 @@ A standard 52-card, 4-suit deck. Contains ranks from 1-13 inclusive and suits `[
 
 It's left to the developer to handle face cards and aces high/low.
 
-### getCell
+## Grid
+
+### buildGrid
 
 TODO
+
+### getCell
+
+```js
+getCell({
+    x,
+    y,
+    board = [],
+    width = 10
+})
+```
+
+Get coordinates `(x, y)` from one-dimensional array `board`, given that board's `width`. For example, on a 3x3 board:
+
+```
+const board = [
+    0, 1, 2,
+    3, 4, 5,
+    6, 7, 8
+]
+
+getCell(1, 1, board, 3) // = 4
+getCell(2, 2, board, 3) // = 8
+```
+
+### getCoordsFromIndex
+
+```
+getCoordsFromIndex(index, width = 10)
+```
+
+Get `{ x, y }` coordinates from a given `index` on a board with the given `width`. For example, on a 3x3 board:
+
+```
+const board = [
+    0, 1, 2,
+    3, 4, 5,
+    6, 7, 8
+]
+
+getCoordsFromIndex(4, 3) // = { x: 1, y: 1 }
+getCoordsFromIndex(8, 3) // = { x: 2, y: 2 }
+```
+
+### getIndexFromCoords
+
+```
+getIndexFromCoords({ x, y }, width = 10)
+```
+
+Get index from given index `{ x, y }` coordinates on a board with the given `width`. For example, on a 3x3 board:
+
+```
+const board = [
+    0, 1, 2,
+    3, 4, 5,
+    6, 7, 8
+]
+
+getIndexFromCoords({x: 1, y: 1}, 3) // = 4
+getIndexFromCoords({x: 2, y: 2}, 3) // = 8
+```
+
+## Vue
 
 ### mixin
 
@@ -205,9 +273,9 @@ The plugin also adds the following global mixin:
 }
 ```
 
-### Misc notes
+## Misc notes
 
-#### Recommended boardgame.io workflow
+### Recommended boardgame.io workflow
 
 1. Prep `lib/game` dir
 1. Files:
@@ -215,6 +283,6 @@ The plugin also adds the following global mixin:
     - `phases.js` contains phases to pass to `index`, including 1 `start: true` phase
     - `moves.js` contains all moves to pass to `phases`
 
-#### Misc tips
+### Misc tips
 
 -   Don't modify G nested properties (like `G.enemies[0].hp - 10`) directly in Vue events - call moves that include an index so the framework can do so (like `<button @click="client.moves.changeHp(i, 10)"</button>` in Vue and `(index, amount) => G.enemies[index].hp -= amount` in the relevant phase).
