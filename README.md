@@ -66,14 +66,11 @@ It's left to the developer to handle face cards and aces high/low.
 
 ## Grid
 
-### buildGrid
-
-TODO
-
 ### getCell
 
 ```js
-import { grid: { getCell } } from 'boardgame-utils'
+import { grid } from 'boardgame-utils'
+const { getCell } = grid
 
 getCell({
     x,
@@ -99,9 +96,10 @@ getCell(2, 2, board, 3) // = 8
 ### getCoordsFromIndex
 
 ```js
-import { grid: { getCoordsFromIndex } } from 'boardgame-utils'
+import { grid } from 'boardgame-utils'
+const { getCoordsFromIndex } = grid
 
-getCoordsFromIndex(index, width = 10)
+getCoordsFromIndex(index, (width = 10))
 ```
 
 Get `{ x, y }` coordinates from a given `index` on a board with the given `width`. For example, on a 3x3 board:
@@ -120,9 +118,10 @@ getCoordsFromIndex(8, 3) // = { x: 2, y: 2 }
 ### getIndexFromCoords
 
 ```js
-import { grid: { getIndexFromCoords } } from 'boardgame-utils'
+import { grid } from 'boardgame-utils'
+const { getIndexFromCoords } = grid
 
-getIndexFromCoords({ x, y }, width = 10)
+getIndexFromCoords({ x, y }, (width = 10))
 ```
 
 Get index from given index `{ x, y }` coordinates on a board with the given `width`. For example, on a 3x3 board:
@@ -136,6 +135,49 @@ const board = [
 
 getIndexFromCoords({x: 1, y: 1}, 3) // = 4
 getIndexFromCoords({x: 2, y: 2}, 3) // = 8
+```
+
+### taxicabDistance
+
+```js
+import { grid } from 'boardgame-utils'
+const { taxicabDistance } = grid
+
+taxicabDistance(a, b)
+```
+
+Get [taxicab distance](https://en.wikipedia.org/wiki/Taxicab_geometry) from two vector2s For example:
+
+```
+const board = [
+    0, 1, 2,
+    3, 4, 5,
+    6, 7, 8
+]
+
+taxicabDistance({x: 0, y: 0}, {x: 1, y: 1}) // = 2
+```
+
+### taxicabDistanceFromIndices
+
+```js
+import { grid } from 'boardgame-utils'
+const { taxicabDistanceFromIndices } = grid
+
+taxicabDistanceFromIndices(a, b, (width = 10))
+```
+
+Get [taxicab distance](https://en.wikipedia.org/wiki/Taxicab_geometry) from two indices given a board of width `width`. For example:
+
+```
+const board = [
+    0, 1, 2,
+    3, 4, 5,
+    6, 7, 8
+]
+
+taxicabDistanceFromIndices(0, 4, 3) // = 4
+taxicabDistanceFromIndices(1, 4, 3) // = 1
 ```
 
 ## Vue
