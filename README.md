@@ -304,6 +304,8 @@ The plugin adds the following in Vuex:
 -   Actions:
     -   `dispatch('INIT_CLIENT', { options : {}})` - Creates a boardgame.io client with the given options. Called automatically unless `initClient` is set to `false`
     -   `dispatch('PLAY_MOVE', { move: 'moveName', options: {} })` - Runs a boardgame.io move with the (optional) given options.
+    -   `dispatch('RESET_GAME')` - Reset the game to its starting state.
+    -   `dispatch('RUN_CLIENT_METHOD', { method: 'methodName', options: {} })` - Runs a method on `client`. For example, to reset the game, you could dispatch `('RUN_CLIENT_METHOD', {method: 'reset'})` (although resetting using the `RESET_GAME` action is recommended).
     -   `dispatch('RUN_EVENT', { event: 'eventName', options: {} })` - Runs a boardgame.io [event](https://boardgame.io/documentation/#/events) with the (optional) given options.
 
 The plugin also adds the following global mixin:
